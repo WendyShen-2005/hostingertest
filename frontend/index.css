@@ -1,0 +1,116 @@
+/* --- Base Styles --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff0f5; /* Lavender Blush (very soft pink) */
+    color: #5c4747; /* Soft dark brown/grey for readability without being harsh */
+}
+
+/* --- Header --- */
+header {
+    background-color: #ffb6c1; /* Light Pink */
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 5px rounded #ffc0cb;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 0px #ff69b4; /* Hot pink shadow for pop */
+}
+
+header p {
+    margin: 0.5rem 0 0 0;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* --- Layout Container --- */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* --- Welcome Card --- */
+.welcome-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 3px solid #ffc0cb;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 16px rgba(255, 182, 193, 0.2);
+}
+
+.welcome-card h2 {
+    color: #ff69b4;
+    margin-top: 0;
+}
+
+/* --- Cute Button --- */
+.cute-btn {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 0px #d14189;
+}
+
+.cute-btn:hover {
+    background-color: #ff85c2;
+    transform: translateY(-2px);
+}
+
+.cute-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 0px 0px #d14189;
+}
+
+/* --- Cat Cards Grid --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.cat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid #ffe4e1;
+    transition: transform 0.3s;
+}
+
+.cat-card:hover {
+    transform: scale(1.03);
+    border-color: #ffb6c1;
+}
+
+.cat-emoji {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cat-card h3 {
+    color: #ff69b4;
+    margin: 0.5rem 0;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
