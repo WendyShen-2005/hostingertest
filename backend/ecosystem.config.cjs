@@ -7,7 +7,6 @@ module.exports = {
       exec_mode: "cluster",    // Enables zero-downtime reloads
       env: {
         NODE_ENV: "production",
-        PORT: 3000
       }
     }
   ]
