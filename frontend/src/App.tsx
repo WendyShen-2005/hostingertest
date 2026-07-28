@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-const URL_START = import.meta.env.URL_START;
+const URL_START = import.meta.env.VITE_URL_START;
 
 function App() {
   const [output, setOutput] = useState("");
