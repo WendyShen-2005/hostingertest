@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-const URL_START = "http://[::1]:1337";
+const URL_START = import.meta.env.URL_START;
 
 function App() {
   const [output, setOutput] = useState("");
