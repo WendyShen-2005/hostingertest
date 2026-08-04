@@ -2,6 +2,7 @@
 import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 
+@ObjectType()
 @Entity("partners")
 export class Partner {
     @Field(() => ID)

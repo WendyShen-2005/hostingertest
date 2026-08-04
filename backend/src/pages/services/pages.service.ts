@@ -39,4 +39,10 @@ export class PageService {
         const result = await this.pageRepository.delete(page_id);
         return (result.affected ?? 0) > 0;
     }
+
+    async getRandomPage(): Promise<Page>{
+        const pages = await this.pageRepository.find();
+        const random = pages[Math.floor(Math.random() * pages.length)];
+        return random;
+    }
 }

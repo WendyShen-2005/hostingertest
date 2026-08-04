@@ -4,12 +4,22 @@ import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import {TypeOrmModule} from "@nestjs/typeorm";
-
+import { PagesModule } from './pages/pages.modules';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+    }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      plugins: [
+      ],
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -28,7 +38,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
           : false,
       })
     }),
-    CatsModule],
+    CatsModule, PagesModule],
   controllers: [AppController],
   providers: [AppService],
 })

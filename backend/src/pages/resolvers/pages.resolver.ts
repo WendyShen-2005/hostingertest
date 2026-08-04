@@ -17,6 +17,11 @@ export class PageResolver {
         return this.pageService.findOne(id);
     }
 
+    @Query(() => Page)
+    async getRandomPage(): Promise<Page> {
+        return this.pageService.getRandomPage();
+    }
+
     @Mutation(() => Page)
     async createPage(@Args('input') input: CreatePageInput): Promise<Page> {
         return this.pageService.create(input);

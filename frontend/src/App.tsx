@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { getRandomPage } from "./services/services";
 
 const URL_START = import.meta.env.VITE_URL_START;
 
@@ -23,10 +24,18 @@ const WALKING_CATS = [
 
 type Tab = "cats" | "article";
 
+type Article = {
+  name: string;
+  content: string;
+  partner: { name: string } | null;
+};
+
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>("cats");
   const [output, setOutput] = useState("");
-  const [articleOutput, setArticleOutput] = useState("");
+  const [articleOutput, setArticleOutput] = useState<Article | string | null>(
+    null
+  );
   const [walkFrame, setWalkFrame] = useState(0);
 
   useEffect(() => {
@@ -54,18 +63,12 @@ function App() {
 
   const handleRandomArticle = async () => {
     // Erase whatever was there before we go fetch the next one.
-    setArticleOutput("");
+    setArticleOutput(null);
 
     try {
-      const response = await fetch(`${URL_START}/articles/random`);
+      const response = await getRandomPage();
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.text();
-
-      setArticleOutput(data);
+      setArticleOutput(response);
     } catch {
       // No /articles/random endpoint yet — this is wired up and ready
       // for whenever the backend grows one.
@@ -153,11 +156,23 @@ function App() {
                 Give me random super cool article
               </button>
 
-              <div
-                id="article-output"
-                className="article-output"
-                dangerouslySetInnerHTML={{ __html: articleOutput }}
-              />
+              <div id="article-output" className="article-output">
+                {typeof articleOutput === "string" ? (
+                  <p>{articleOutput}</p>
+                ) : (
+                  articleOutput && (
+                    <>
+                      <h2>{articleOutput.name}</h2>
+                      {articleOutput.partner && (
+                        <h3>{articleOutput.partner.name}</h3>
+                      )}
+                      <p style={{ whiteSpace: "pre-wrap" }}>
+                        {articleOutput.content}
+                      </p>
+                    </>
+                  )
+                )}
+              </div>
             </section>
 
             <div className="cat-walk-track">

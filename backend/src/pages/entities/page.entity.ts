@@ -18,8 +18,8 @@ export class Page {
     @Column()
     content?: string;
 
-    @Field()
-    @OneToOne(() => Partner)
+    @Field(() => Partner, { nullable: true })
+    @OneToOne(() => Partner, {nullable: true})
     @JoinColumn({name: 'partner_id'})
-    partner!: Partner;
+    partner?: Partner;
 }
