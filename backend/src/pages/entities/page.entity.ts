@@ -4,7 +4,7 @@ import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { Partner } from './partner.entity';
 
 @ObjectType()
-@Entity('partners')
+@Entity('pages')
 export class Page {
     @Field(() => ID)
     @PrimaryColumn({generated: "uuid"})
