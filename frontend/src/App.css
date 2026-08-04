@@ -29,11 +29,71 @@ header p {
     opacity: 0.9;
 }
 
+/* --- Binder Tabs --- */
+.tab-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    max-width: 800px;
+    margin: 1.5rem auto 0;
+    padding: 0 1rem;
+}
+
+.tab-button {
+    background-color: #ffb6c1;
+    color: white;
+    border: 3px solid #ffc0cb;
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    max-width: 150px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.25;
+    text-align: center;
+    position: relative;
+    top: 4px;
+    transition: background-color 0.2s, top 0.15s, color 0.2s;
+}
+
+.tab-button:hover:not(.active) {
+    background-color: #ff9fb7;
+}
+
+.tab-button.active {
+    background-color: #fff;
+    color: #ff69b4;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.06);
+}
+
 /* --- Layout Container --- */
 .container {
     max-width: 800px;
-    margin: 2rem auto;
+    margin: 0 auto 2rem;
     padding: 0 1rem;
+}
+
+.tab-panel {
+    background: white;
+    border: 3px solid #ffc0cb;
+    border-radius: 0 20px 20px 20px;
+    padding-top: 1.5rem;
+}
+
+.tab-panel .welcome-card {
+    border: none;
+    box-shadow: none;
+    margin-bottom: 1rem;
+}
+
+.tab-panel .gallery {
+    padding-bottom: 1.5rem;
 }
 
 /* --- Welcome Card --- */
@@ -105,6 +165,45 @@ header p {
 .cat-card h3 {
     color: #ff69b4;
     margin: 0.5rem 0;
+}
+
+/* --- Article Tab --- */
+.article-output {
+    margin-top: 1rem;
+    min-height: 1.5rem;
+    color: #5c4747;
+}
+
+/* --- Walking Cats --- */
+.cat-walk-track {
+    position: relative;
+    height: 100px;
+    margin: 0.5rem 1.5rem 1.5rem;
+    overflow: hidden;
+    border-top: 2px dashed #ffc0cb;
+}
+
+.ascii-cat {
+    position: absolute;
+    left: -150px;
+    margin: 0;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.05;
+    color: #ff69b4;
+    white-space: pre;
+    animation-name: walk-across;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes walk-across {
+    from {
+        left: -150px;
+    }
+    to {
+        left: 100%;
+    }
 }
 
 /* --- Footer --- */
