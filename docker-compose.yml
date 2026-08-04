@@ -1,18 +1,20 @@
-version: '3.8'
-
 services:
-  postgres_db:
-    image: postgres:16-alpine
-    container_name: local_postgres
-    restart: always
-    environment:
-      POSTGRES_DB: my_local_db
-      POSTGRES_USER: dev_user
-      POSTGRES_PASSWORD: dev_password
+  backend: 
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+      - "1337:1337"
+    environment:
+      - NODE_ENV=development
 
-volumes:
-  pgdata:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    depends_on:
+      - backend
